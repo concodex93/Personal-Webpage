@@ -10,12 +10,12 @@ class ColourToggleButton extends React.Component {
       this.setState({ currentColour: 'light' });
     }
 
-    this.props.updateBackgroundColour(this.state.currentColour);
+    this.props.updateColours(this.state.currentColour);
   };
 
   render() {
     return (
-      <div className="ui container">
+      <div className="ui container" style={{ padding: '5px' }}>
         <button className="ui button" onClick={this.toggleColour}>
           {this.state.currentColour}
         </button>

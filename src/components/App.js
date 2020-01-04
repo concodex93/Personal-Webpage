@@ -4,24 +4,27 @@ import ColourToggleButton from './ColourToggleButton';
 import { DIV } from '../styles/AppStyle';
 
 class App extends React.Component {
-  state = { background: '#fffefc' };
+  state = { background: '#fffefc', font: '#263238' };
 
-  updateBackgroundColour = toggleStatus => {
-    if (toggleStatus === 'light') {
-      this.setState({ background: '#282a36' });
+  updateColours = currentColour => {
+    if (currentColour === 'light') {
+      this.setState({ background: '#282a36', font: '#fffefc' });
     } else {
-      this.setState({ background: '#fffefc' });
+      this.setState({ background: '#fffefc', font: '#263238' });
     }
   };
 
   render() {
     return (
-      <DIV style={{ backgroundColor: `${this.state.background}` }}>
+      <DIV
+        style={{
+          backgroundColor: `${this.state.background}`,
+          color: `${this.state.font}`
+        }}
+      >
         <div>
-          <ColourToggleButton
-            updateBackgroundColour={this.updateBackgroundColour}
-          />
-          <Profile />
+          <ColourToggleButton updateColours={this.updateColours} />
+          <Profile updateColours={this.updateColours} />
         </div>
       </DIV>
     );

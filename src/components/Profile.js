@@ -7,8 +7,16 @@ const Profile = () => {
     <div className="ui container" style={{ padding: '50px' }}>
       <div className="ui centered card">
         <div className="ui slide masked reveal image">
-          <img src="/images/image1.png" className="visible content"></img>
-          <img src="/images/image3.png" className="hidden content"></img>
+          <img
+            src="/images/image1.png"
+            className="visible content"
+            alt="test"
+          ></img>
+          <img
+            src="/images/image3.png"
+            className="hidden content"
+            alt="test"
+          ></img>
         </div>
         <div className="content">
           <a className="header">Conor Byrne</a>
