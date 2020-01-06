@@ -12,7 +12,6 @@ const Blurb = () => {
   const blurbList = blurb.split(' ');
 
   const processKeywords = () => {
-    console.log('test');
     // get all reserved words
     const reservedKeywords = getAllReservedKeywords();
     // for each color cat
@@ -22,16 +21,26 @@ const Blurb = () => {
         // is reserved word in blurb
         if (blurbList.includes(keyword.toLowerCase())) {
           // set approperaite color
-          let word = blurbList.find(keyword);
-          setColor(word, item);
+          let word = blurbList.find(element => element === keyword);
+          // create span and set color
+          let span = setColor(word, item);
+          // find index of word to replace
+          let index = blurbList.findIndex(el => el === keyword);
+          if (index) {
+            blurbList[index] = span.innerHTML;
+          }
         }
       });
     }
 
-    return blurb;
+    return blurbList;
   };
 
   const setColor = (word, color) => {
+    // Creat element
+    const span = document.createElement('span');
+    span.textContent = word;
+    // Color switch
     let colorHex;
     switch (color) {
       case 'magenta':
@@ -52,7 +61,8 @@ const Blurb = () => {
       default:
         colorHex = '';
     }
-    word.style.color = colorHex;
+    span.style.color = colorHex;
+    return span;
   };
 
   return (
